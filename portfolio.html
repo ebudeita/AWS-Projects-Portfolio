@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Review this part and modify it to your liking -->
+    <meta name="description" content="Sample text for portfolio template meta tag">
+    <meta name="keywords" content="Sample text for portfolio template meta tag">
+    <meta name="author" content="Sample text for portfolio template meta tag">
+    <title>Portfolio</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <!-- This page benefits from the main css and also from the about-me css, that is why all 3 is linked -->
+    <link rel="stylesheet" type="text/css" href="style-about-me.css">
+    <link rel="stylesheet" type="text/css" href="style-portfolio.css">
+    <!-- font for the quote -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Covered+By+Your+Grace&display=swap" rel="stylesheet">
+    <!-- font for the body -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400&display=swap" rel="stylesheet">
+    <!-- font for headings -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@200&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <!-- navigation bar -->
+    <nav class="sticky">
+        <label for="drop" class="toggle" id="main-toggle">
+            <span class="nav-icon"></span>
+        </label>
+        <input type="checkbox" id="drop">
+        <ul class="main-nav">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about-me.html">About me</a></li>
+            <li><a href="skill-set.html">Skill-set</a></li>
+            <li><a href="portfolio.html">Portfolio</a></li>
+            <li><a href="index.html#contact-me">Contact me</a></li>
+        </ul>
+    </nav>
+
+    <!-- Use align center accordingly as it my center vertically the image or the text. Or if you do not want to use it at all, then just delete it -->
+    <!-- project1 -->
+    <section class="grid-system-2 w-900 padding">
+        <section class="justify align-center">
+            <h3 class="main-title padding-top">Static Website Hosting on AWS S3 with CloudFront and Route 53</h3>
+            <p>This project demonstrates how to host and deliver a static website using key AWS services for scalability, security, and cost efficiency. The website’s HTML, CSS, and JavaScript files are stored in an Amazon S3 bucket, configured for static website hosting.</p>
+            <p>To ensure fast global delivery and HTTPS security, Amazon CloudFront serves as a content delivery network (CDN), caching content closer to users. A custom domain managed through Amazon Route 53 provides reliable DNS routing and domain name management.
+            </p>
+            <p>This setup highlights best practices for serverless web hosting, offering high availability, low latency, and minimal maintenance — ideal for portfolio sites, company landing pages, or documentation platforms.
+            </p>
+            <p>Key AWS Services Used:
+            </p>
+             <ul class="justify padding-list-10">
+                <li class="no-padding-list-item"> Amazon S3                </li>
+                <li class="no-padding-list-item"> Amazon CloudFront        </li>
+                <li class="no-padding-list-item">Amazon Route 53                </li>
+                <li class="no-padding-list-item"> AWS Identity and Access Management (IAM)          </li>
+               
+            </ul>
+
+            <p class="padding-top"><a href="project1.html" class="button-outline">More info</a></p>
+        </section>
+        <section class="center">
+            <p><a href="project1.html"><img class="max-width" src="assets/project1.png" alt="project1"></a>
+        </section>
+    </section>
+
+    <!-- project2 -->
+    <section class="grid-system-2 w-900 padding">
+        <section class="justify align-center">
+            <h3 class="main-title padding-top">Three-Tier Web Application Architecture on AWS</h3>
+            <p>Coming soon!</p>
+            <p>This project will showcase the design of a highly available, fault-tolerant, and secure three-tier web application hosted on AWS. The architecture will follow best practices for scalability and resilience, separating the system into presentation, application, and database layers to ensure efficient performance and maintainability.</p>
+            <!-- <p class="padding-top"><a href="project2.html" class="button-outline">More info</a></p> -->
+        </section>
+        <section class="center padding-top align-center">
+            <p><a href="project2.html"><img class="max-width" src="assets/project2.png" alt="project2"></a></p>
+        </section>
+    </section>
+
+    <!-- project3 
+    <section class="grid-system-2 w-900 padding">
+        <section class="justify">
+            <h3 class="main-title padding-top">Three-Tier Web Application Architecture on AWS</h3>
+            <p>Coming soon!</p>
+            <p>This project will showcase the design of a highly available, fault-tolerant, and secure three-tier web application hosted on AWS. The architecture will follow best practices for scalability and resilience, separating the system into presentation, application, and database layers to ensure efficient performance and maintainability.</p>
+            <p class="padding-top"><a href="project3.html" class="button-outline">More info</a></p>
+        </section>
+        <section class="center">
+            <p><a href="project3.html"><img class="max-width" src="assets/project3.png" alt="project3"></a>
+        </section>
+    </section> -->
+
+    <!-- footer -->
+    <footer>@ebudeita 2025</footer>
+</body>
+
+</html>

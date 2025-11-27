@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Review this part and modify it to your liking -->
+    <meta name="description" content="Sample text for portfolio template meta tag">
+    <meta name="keywords" content="Sample text for portfolio template meta tag">
+    <meta name="author" content="Sample text for portfolio template meta tag">
+    <title>Project1</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <link rel="stylesheet" type="text/css" href="style-project.css">
+    <!-- font for the quote -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Covered+By+Your+Grace&display=swap" rel="stylesheet">
+    <!-- font for the body -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400&display=swap" rel="stylesheet">
+    <!-- font for headings -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@200&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <!-- navigation bar -->
+    <nav class="sticky">
+        <label for="drop" class="toggle" id="main-toggle">
+            <span class="nav-icon"></span>
+        </label>
+        <input type="checkbox" id="drop">
+        <ul class="main-nav">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about-me.html">About me</a></li>
+            <li><a href="skill-set.html">Skill-set</a></li>
+            <li><a href="portfolio.html">Portfolio</a></li>
+            <li><a href="index.html#contact-me">Contact me</a></li>
+        </ul>
+    </nav>
+
+    <!-- project name -->
+    <section class="w-900 padding center">
+        <h2 class="medium-spacing-halfsize">Static Website Hosting</h2>
+        <p class="center italic">Static Website Hosting on AWS S3 with CloudFront and Route 53</p>
+    </section>
+
+    <!-- about this project -->
+    <section class="w-900 padding center">
+        <h3 class="main-title">Ita's portforlio website&nbsp;</h3>
+        <section>
+            <p class="justify">For this project, my goal was to deploy a fast, secure, and cost-efficient static website using AWS best practices. I chose Amazon S3 for hosting due to its durability and simplicity, and paired it with Amazon CloudFront to ensure low-latency, global content delivery. Route 53 manages the domain and DNS routing, providing reliable availability and seamless HTTPS integration through ACM. This setup results in a highly scalable architecture with 99.99% availability, sub-second load times, and a monthly cost of under $2.</p>
+            <p class="justify">This portfolio website you’re viewing is the live implementation of this architecture.&nbsp;You’re currently viewing it live on AWS infrastructure.</p>
+			
+			<p class="center">Explore my code on <span class="italic colorful-letter"><a class="link" href="https://github.com/" target="_blank">GitHub </a></span>!</p>
+        </section>
+    </section>
+
+    <section class="w-900 padding">
+      <h3 class="main-title center">Architectural Diagrams</h3>
+    <img src="assets/55.png" width="800" height="533" alt=""/>  
+		<p>Screenshot of files in the S3 Bucket</p>
+		<img src="assets/S3Bucket.png" width="952" height="381" alt=""/>  
+		 <p>&nbsp;</p>
+		<p>Screenshot of the Route 53 console</p>
+		<img src="assets/Route53.png" width="948" height="380" alt=""/>  
+	</section>
+    <p>&nbsp;</p>
+
+    <!-- what did i learn -->
+    <section class="w-900 padding center baby-pink-light">
+            <h3 class="main-title">Lessons Learned</h3>
+            <ul class="justify padding-list-10">
+                <li class="no-padding-list-item">How to configure an Amazon S3 bucket for static website hosting and enforce proper public access settings.</li>
+                <li class="no-padding-list-item">The importance of using CloudFront to improve global performance, caching, and security.</li>
+                <li class="no-padding-list-item">How to connect a custom domain through Route 53 and integrate HTTPS using AWS Certificate Manager.</li>
+                <li class="no-padding-list-item">Understanding how S3, CloudFront, and Route 53 work together to create a highly available, scalable architecture.</li> 
+                <li class="no-padding-list-item">Best practices for cost optimization when hosting static sites on AWS.</li>
+                <li class="no-padding-list-item">How to troubleshoot common issues like permission errors, caching delays, and DNS propagation times.</li>
+				<li class="no-padding-list-item">The value of documenting architecture decisions and creating diagrams to communicate technical solutions clearly.</li>
+				<li class="no-padding-list-item">Gaining hands-on experience with deploying real-world infrastructure using AWS console and services.</li>
+            </ul>
+    </section>
+
+    <p class="wrapper justify-content"><a href="portfolio.html" class="link-no-scale colorful-letter">Back to portfolio</a></p>
+
+    <!-- footer -->
+    <footer>@ebudeita 2025</footer>
+</body>
+
+</html>
