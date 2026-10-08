@@ -1,5 +1,5 @@
 
-name: Portfolio Deployment Dry Run
+name: Portfolio CI/CD Deployment
 
 on:
   push:
