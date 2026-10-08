@@ -1,0 +1,48 @@
+
+name: Portfolio Deployment Dry Run
+
+on:
+  workflow_dispatch:
+
+permissions:
+  id-token: write
+  contents: read
+
+jobs:
+  deployment-preview:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Configure AWS credentials
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          role-to-assume: ${{ secrets.AWS_ROLE_ARN }}
+          aws-region: ${{ vars.AWS_REGION }}
+
+      - name: Verify AWS identity
+        run: aws sts get-caller-identity
+
+      - name: Preview S3 deployment
+        run: |
+          aws s3 sync . "s3://${{ vars.S3_BUCKET }}/" \
+            --dryrun \
+            --exclude "*" \
+            --include "*.html" \
+            --include "*.css" \
+            --include "*.js" \
+            --include "*.json" \
+            --include "*.ico" \
+            --include "*.png" \
+            --include "*.jpg" \
+            --include "*.jpeg" \
+            --include "*.gif" \
+            --include "*.svg" \
+            --include "*.webp" \
+            --include "*.woff" \
+            --include "*.woff2" \
+            --include "*.ttf" \
+            --include "*.xml" \
+            --include "robots.txt"
