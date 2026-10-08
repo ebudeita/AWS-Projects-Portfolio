@@ -25,9 +25,25 @@ jobs:
       - name: Verify AWS identity
         run: aws sts get-caller-identity
 
+      - name: Prepare website files
+        run: |
+          mkdir -p deploy
+
+          git ls-files -z | while IFS= read -r -d '' file; do
+            case "$file" in
+              *.html|*.css|*.js|*.json|*.ico|*.png|*.jpg|*.jpeg|*.gif|*.svg|*.webp|*.woff|*.woff2|*.ttf|*.xml|robots.txt)
+                mkdir -p "deploy/$(dirname "$file")"
+                cp -- "$file" "deploy/$file"
+                ;;
+            esac
+          done
+
+          echo "Website files prepared:"
+          find deploy -type f | wc -l
+
       - name: Preview S3 deployment
         run: |
-          aws s3 sync . "s3://${{ vars.S3_BUCKET }}/" \
+          aws s3 sync deploy/ "s3://${{ vars.S3_BUCKET }}/" \
             --dryrun \
             --exclude "*" \
             --include "*.html" \
