@@ -76,6 +76,7 @@ jobs:
         run: |
           set -euo pipefail
           aws s3 sync deploy/ "s3://${{ vars.S3_BUCKET }}/" \
+            --no-progress \
             --exclude "*" \
             --include "*.html" \
             --include "*.css" \
@@ -94,7 +95,7 @@ jobs:
             --include "*.xml" \
             --include "robots.txt" | tee /tmp/s3-sync.log
 
-          if grep -Eq '^[[:space:]]*(upload|delete|copy):' /tmp/s3-sync.log; then
+          if grep -Eq '(upload|delete|copy):' /tmp/s3-sync.log; then
             echo "changed=true" >> "$GITHUB_OUTPUT"
             echo "Website changes detected."
           else
