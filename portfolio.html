@@ -1,107 +1,128 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
+    <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- Review this part and modify it to your liking -->
-    <meta name="description" content="Sample text for portfolio template meta tag">
-    <meta name="keywords" content="Sample text for portfolio template meta tag">
-    <meta name="author" content="Sample text for portfolio template meta tag">
-    <title>Portfolio</title>
-    <link rel="stylesheet" type="text/css" href="style.css">
-    <!-- This page benefits from the main css and also from the about-me css, that is why all 3 is linked -->
-    <link rel="stylesheet" type="text/css" href="style-about-me.css">
-    <link rel="stylesheet" type="text/css" href="style-portfolio.css">
-    <!-- font for the quote -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Covered+By+Your+Grace&display=swap" rel="stylesheet">
-    <!-- font for the body -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200&display=swap" rel="stylesheet">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400&display=swap" rel="stylesheet">
-    <!-- font for headings -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@200&display=swap" rel="stylesheet">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400&display=swap" rel="stylesheet">
+    <meta name="description" content="Explore cloud case studies covering S3 hosting, hybrid migration, three-tier AWS architecture, and a Moodle LMS deployed with Terraform.">
+    <meta name="author" content="Ita Ebude">
+    <meta name="theme-color" content="#96345e">
+    <title>AWS Cloud Projects | Ita Ebude</title>
+    <link rel="canonical" href="https://itaebude.com/portfolio.html">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Ita Ebude | Cloud Portfolio">
+    <meta property="og:title" content="AWS Cloud Projects | Ita Ebude">
+    <meta property="og:description" content="Explore cloud case studies covering S3 hosting, hybrid migration, three-tier AWS architecture, and a Moodle LMS deployed with Terraform.">
+    <meta property="og:url" content="https://itaebude.com/portfolio.html">
+    <meta property="og:image" content="https://itaebude.com/assets/profile-pic2.png">
+    <meta property="og:image:alt" content="Ita Ebude">
+    <meta name="twitter:card" content="summary">
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style-portfolio.css">
+    <script type="application/ld+json">{"url":"https://itaebude.com/portfolio.html","@type":"WebPage","@context":"https://schema.org","name":"AWS Cloud Projects | Ita Ebude","about":{"@id":"https://itaebude.com/#ita-ebude"}}</script>
 </head>
-
-<body>
-    <!-- navigation bar -->
-    <nav class="sticky">
-        <label for="drop" class="toggle" id="main-toggle">
-            <span class="nav-icon"></span>
-        </label>
-        <input type="checkbox" id="drop">
+    <body>
+        <!-- navigation bar -->
+        <a class="skip-link" href="#main-content">Skip to content</a>
+    <nav class="sticky" aria-label="Main navigation">
+      <div class="nav-inner">
+        <a class="brand" href="index.html">Ita Ebude<span class="colorful-letter">.</span></a>
         <ul class="main-nav">
-            <li><a href="index.html">Home</a></li>
-            <li><a href="about-me.html">About me</a></li>
-            <li><a href="skill-set.html">Skill-set</a></li>
-            <li><a href="portfolio.html">Portfolio</a></li>
-            <li><a href="index.html#contact-me">Contact me</a></li>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about-me.html">About</a></li>
+          <li><a href="skill-set.html">Skills</a></li>
+          <li><a href="portfolio.html" aria-current="page">Projects</a></li>
+          <li><a href="skill-set.html#certifications">Certifications</a></li>
+          <li><a href="index.html#contact-me">Contact</a></li>
         </ul>
+      </div>
     </nav>
-
-    <!-- Use align center accordingly as it my center vertically the image or the text. Or if you do not want to use it at all, then just delete it -->
-    <!-- project1 -->
-    <section class="grid-system-2 w-900 padding">
-        <section class="justify align-center">
-            <h3 class="main-title padding-top">Static Website Hosting on AWS S3 with CloudFront and Route 53</h3>
-            <p>This project demonstrates how to host and deliver a static website using key AWS services for scalability, security, and cost efficiency. The website’s HTML, CSS, and JavaScript files are stored in an Amazon S3 bucket, configured for static website hosting.</p>
-            <p>To ensure fast global delivery and HTTPS security, Amazon CloudFront serves as a content delivery network (CDN), caching content closer to users. A custom domain managed through Amazon Route 53 provides reliable DNS routing and domain name management.
-            </p>
-            <p>This setup highlights best practices for serverless web hosting, offering high availability, low latency, and minimal maintenance — ideal for portfolio sites, company landing pages, or documentation platforms.
-            </p>
-            <p>Key AWS Services Used:
-            </p>
-             <ul class="justify padding-list-10">
-                <li class="no-padding-list-item"> Amazon S3                </li>
-                <li class="no-padding-list-item"> Amazon CloudFront        </li>
-                <li class="no-padding-list-item">Amazon Route 53                </li>
-                <li class="no-padding-list-item"> AWS Identity and Access Management (IAM)          </li>
-               
-            </ul>
-
-            <p class="padding-top"><a href="project1.html" class="button-outline">More info</a></p>
+    <main id="main-content" tabindex="-1"><header class="w-900 padding"><p class="eyebrow">Practical AWS experience</p><h1>Cloud projects</h1>
+            <p>Architecture, implementation, and lessons from building on AWS.</p></header>
+        <!-- Use align center accordingly as it my center vertically the image or the text. Or if you do not want to use it at all, then just delete it -->
+        <!-- project1 -->
+        <section class="grid-system-2 w-900 padding">
+            <section class="justify align-center">
+                <h2 class="main-title padding-top">Static Website Hosting on AWS S3 with CloudFront and Route 53</h2>
+                <p>This project demonstrates the delivery of a static website using key AWS services for scalability, security, and cost efficiency. The website’s HTML, CSS, and JavaScript files are stored in an Amazon S3 bucket, configured for static website hosting.</p>
+                <p>To ensure fast global delivery and HTTPS security, Amazon CloudFront serves as a content delivery network (CDN), caching content closer to users. A custom domain managed through Amazon Route 53 provides reliable DNS routing and domain name management. </p>
+                <p>This setup highlights best practices for serverless web hosting, offering high availability, low latency, and minimal maintenance — ideal for portfolio sites, company landing pages, or documentation platforms. </p>
+                <p>Key AWS Services Used: </p>
+                <ul class="justify padding-list-10">
+                    <li class="no-padding-list-item"> Amazon S3                </li>
+                    <li class="no-padding-list-item"> Amazon CloudFront        </li>
+                    <li class="no-padding-list-item">Amazon Route 53                </li>
+                    <li class="no-padding-list-item"> AWS Identity and Access Management (IAM)          </li>
+                </ul>
+                <p class="padding-top"><a href="project1.html" class="button-outline">Read case study</a></p>
+            </section>
+            <section class="center">
+                <p><a href="project1.html"><img class="max-width" src="assets/optimized/project1-960.jpg" srcset="assets/optimized/project1-480.jpg 480w, assets/optimized/project1-960.jpg 960w" sizes="(max-width: 800px) calc(100vw - 32px), 480px" alt="AWS static website architecture using S3, CloudFront, and Route 53" width="1490" height="843" decoding="async" loading="eager" fetchpriority="high"></a></p>
+            </section>
         </section>
-        <section class="center">
-            <p><a href="project1.html"><img class="max-width" src="assets/project1.png" alt="project1"></a>
+        <!-- project2 -->
+        <section class="grid-system-2 w-900 padding">
+            <section class="justify align-center">
+                <h2 class="main-title padding-top">Hybrid Cloud Migration: On-Prem NFS to AWS</h2>
+                <p>This project showcases my ability to design and implement a secure, hybrid cloud storage architecture that migrates on-premises NFS workloads to AWS with minimal disruption. Leveraging AWS DataSync, AWS Storage Gateway, Amazon S3, and Amazon EC2, I architected a solution that ensures data integrity, scalability, and continued hybrid access during transition. It demonstrates my capability to translate business requirements into resilient cloud architectures, apply security best practices using IAM and monitoring, and design migration strategies aligned with real-world enterprise modernization goals.</p>
+                <p class="padding-top"><a href="project2.html" class="button-outline">Read case study</a></p>
+            </section>
+            <section class="center padding-top align-center">
+                <p><a href="project2.html"><img class="max-width" src="assets/optimized/project2-960.jpg" srcset="assets/optimized/project2-480.jpg 480w, assets/optimized/project2-960.jpg 960w" sizes="(max-width: 800px) calc(100vw - 32px), 480px" alt="Hybrid NFS migration architecture using DataSync, Storage Gateway, and S3" width="1890" height="940" decoding="async" loading="lazy"></a></p>
+            </section>
         </section>
-    </section>
-
-    <!-- project2 -->
-    <section class="grid-system-2 w-900 padding">
-        <section class="justify align-center">
-            <h3 class="main-title padding-top">Three-Tier Web Application Architecture on AWS</h3>
-            <p>Coming soon!</p>
-            <p>This project will showcase the design of a highly available, fault-tolerant, and secure three-tier web application hosted on AWS. The architecture will follow best practices for scalability and resilience, separating the system into presentation, application, and database layers to ensure efficient performance and maintainability.</p>
-            <!-- <p class="padding-top"><a href="project2.html" class="button-outline">More info</a></p> -->
+        <!-- project3 -->
+        <section class="grid-system-2 w-900 padding">
+            <section class="justify">
+                <h2 class="main-title padding-top">Three-Tier Web Application Architecture on AWS</h2>
+                <p>This project showcases the design of a highly available, fault-tolerant, and secure three-tier web application hosted on AWS. The architecture follows best practices for scalability and resilience, separating the system into presentation, application, and database layers to ensure efficient performance and maintainability.</p>
+                <p class="padding-top"><a href="project3.html" class="button-outline">Read case study</a></p>
+            </section>
+            <section class="center">
+                <p><a href="project3.html"><img class="max-width" src="assets/optimized/project3-960.jpg" srcset="assets/optimized/project3-480.jpg 480w, assets/optimized/project3-960.jpg 960w" sizes="(max-width: 800px) calc(100vw - 32px), 480px" alt="Three-tier AWS architecture with isolated web, application, and database layers" width="1220" height="662" decoding="async" loading="lazy"></a></p>
+            </section>
         </section>
-        <section class="center padding-top align-center">
-            <p><a href="project2.html"><img class="max-width" src="assets/project2.png" alt="project2"></a></p>
+        <!-- project4 -->
+        <section class="grid-system-2 w-900 padding">
+            <section class="justify">
+                <h2 class="main-title padding-top">Cloud-hosted Moodle LMS</h2>
+                <p>I designed and deployed a cloud-hosted Moodle Learning Management System (LMS) on AWS using Terraform. The project demonstrates how an educational institution or training organization can host an online learning platform in the cloud while separating the application and database layers and applying secure AWS networking practices.</p>
+                <p class="padding-top"><a href="project4.html" class="button-outline">Read case study</a></p>
+            </section>
+            <section class="center">
+                <p><a href="project4.html"><img class="max-width" src="assets/optimized/project4-960.jpg" srcset="assets/optimized/project4-480.jpg 480w, assets/optimized/project4-960.jpg 960w" sizes="(max-width: 800px) calc(100vw - 32px), 480px" alt="Cloud-hosted Moodle LMS project" width="1536" height="1024" decoding="async" loading="lazy"></a></p>
+            </section>
         </section>
-    </section>
-
-    <!-- project3 
-    <section class="grid-system-2 w-900 padding">
-        <section class="justify">
-            <h3 class="main-title padding-top">Three-Tier Web Application Architecture on AWS</h3>
-            <p>Coming soon!</p>
-            <p>This project will showcase the design of a highly available, fault-tolerant, and secure three-tier web application hosted on AWS. The architecture will follow best practices for scalability and resilience, separating the system into presentation, application, and database layers to ensure efficient performance and maintainability.</p>
-            <p class="padding-top"><a href="project3.html" class="button-outline">More info</a></p>
+        <!-- project6: EduCloud Guard -->
+        <section id="educloud-guard" class="grid-system-2 w-900 padding">
+            <section class="justify">
+                <h2 class="main-title padding-top">EduCloud Guard — AWS Cloud Governance &amp; Security</h2>
+                <p>I built EduCloud Guard to automate governance, security, and cost checks for a simulated university AWS environment. Daily Lambda scans identify missing tags, unapproved departments, public SSH and RDP access, and unattached EBS volumes.</p>
+                <p>Terraform provisions the infrastructure, DynamoDB tracks findings through their lifecycle, and SNS alerts highlight high-severity issues. A centralized dashboard provides filters, finding history, and remediation guidance without exposing AWS credentials in the browser.</p>
+                <p class="padding-top"><a href="project6.html" class="button-outline">Read EduCloud Guard case study</a></p>
+            </section>
+            <section class="center">
+                <p><a href="project6.html"><img class="max-width" src="assets/project6.png" alt="EduCloud Guard AWS governance and security architecture" width="1536" height="1024" loading="lazy" decoding="async"></a></p>
+            </section>
         </section>
-        <section class="center">
-            <p><a href="project3.html"><img class="max-width" src="assets/project3.png" alt="project3"></a>
+        <!-- project5 -->
+        <section class="grid-system-2 w-900 padding">
+            <section class="justify">
+                <h2 class="main-title padding-top">Serverless Photo Upload Application</h2>
+                <p>Planned project — case study in progress.</p>
+                <p>This project demonstrates a serverless photo upload application built on AWS using managed services to create a scalable and cost-efficient solution. Users can upload photos through a simple web interface, with files stored securely in Amazon S3 and processed automatically using AWS Lambda functions. The application uses API Gateway to handle requests and integrates with additional services for authentication, storage, and monitoring. This project highlights my understanding of serverless architecture, event-driven processing, and building modern cloud-native applications without managing servers.</p>
+                <!-- <p class="padding-top"><a href="project4.html" class="button-outline">Read case study</a></p> -->
+            </section>
+            <section class="center">
+                <p><img class="max-width" src="assets/project5.webp" alt="Serverless photo upload project" width="841" height="560" decoding="async" loading="lazy"></p>
+            </section>
         </section>
-    </section> -->
-
-    <!-- footer -->
-    <footer>@ebudeita 2025</footer>
-</body>
-
+        <!-- footer -->
+            </main>
+    <footer>
+      <p>&copy; 2026 Ita Ebude · Cloud engineering portfolio</p>
+      <a href="https://github.com/ebudeita">GitHub</a> · <a href="https://www.linkedin.com/in/ebude-ita/">LinkedIn</a> · <a href="mailto:ebudeita@gmail.com">Email</a>
+      <p>Template by <a href="https://github.com/iluskaland/portfolio-template">iluskaland</a> · <a href="CREDITS.md">Credits</a></p>
+    </footer>
+    </body>
 </html>

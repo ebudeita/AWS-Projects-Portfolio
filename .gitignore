@@ -1,0 +1,15 @@
+# Local editor configuration
+pinegrow.json
+
+# Local backup folders
+_pgbackup/
+_pginfo/
+
+# Local audit and preview files
+*.csv
+*.ps1
+
+# Environment and credentials
+.env
+.env.*
+*.pem

@@ -4,116 +4,135 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- Review this part and modify it to your liking -->
-    <meta name="description" content="Sample text for portfolio template meta tag">
-    <meta name="keywords" content="Sample text for portfolio template meta tag">
-    <meta name="author" content="Sample text for portfolio template meta tag">
-    <title>Project2</title>
-    <link rel="stylesheet" type="text/css" href="style.css">
-    <link rel="stylesheet" type="text/css" href="style-project.css">
-    <!-- font for the quote -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Covered+By+Your+Grace&display=swap" rel="stylesheet">
-    <!-- font for the body -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200&display=swap" rel="stylesheet">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400&display=swap" rel="stylesheet">
-    <!-- font for headings -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@200&display=swap" rel="stylesheet">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400&display=swap" rel="stylesheet">
+    <meta name="description" content="A hybrid NFS storage migration using AWS DataSync, Storage Gateway, Amazon S3, and CloudWatch, with design decisions and implementation lessons.">
+    <meta name="author" content="Ita Ebude">
+    <meta name="theme-color" content="#96345e">
+    <title>Hybrid Cloud Migration on AWS | Ita Ebude</title>
+    <link rel="canonical" href="https://itaebude.com/project2.html">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Ita Ebude | Cloud Portfolio">
+    <meta property="og:title" content="Hybrid Cloud Migration on AWS | Ita Ebude">
+    <meta property="og:description" content="A hybrid NFS storage migration using AWS DataSync, Storage Gateway, Amazon S3, and CloudWatch, with design decisions and implementation lessons.">
+    <meta property="og:url" content="https://itaebude.com/project2.html">
+    <meta property="og:image" content="https://itaebude.com/assets/profile-pic2.png">
+    <meta property="og:image:alt" content="Ita Ebude">
+    <meta name="twitter:card" content="summary">
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style-project.css">
+    <script type="application/ld+json">{"url":"https://itaebude.com/project2.html","@type":"WebPage","@context":"https://schema.org","name":"Hybrid Cloud Migration on AWS | Ita Ebude","about":{"@id":"https://itaebude.com/#ita-ebude"}}</script>
 </head>
 
 <body>
     <!-- navigation bar -->
-    <nav class="sticky">
-        <label for="drop" class="toggle" id="main-toggle">
-            <span class="nav-icon"></span>
-        </label>
-        <input type="checkbox" id="drop">
+    <a class="skip-link" href="#main-content">Skip to content</a>
+    <nav class="sticky" aria-label="Main navigation">
+      <div class="nav-inner">
+        <a class="brand" href="index.html">Ita Ebude<span class="colorful-letter">.</span></a>
         <ul class="main-nav">
-            <li><a href="index.html">Home</a></li>
-            <li><a href="about-me.html">About me</a></li>
-            <li><a href="skill-set.html">Skill-set</a></li>
-            <li><a href="portfolio.html">Portfolio</a></li>
-            <li><a href="index.html#contact-me">Contact me</a></li>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about-me.html">About</a></li>
+          <li><a href="skill-set.html">Skills</a></li>
+          <li><a href="portfolio.html">Projects</a></li>
+          <li><a href="skill-set.html#certifications">Certifications</a></li>
+          <li><a href="index.html#contact-me">Contact</a></li>
         </ul>
+      </div>
     </nav>
+    <main id="main-content" tabindex="-1">
 
     <!-- project name -->
     <section class="w-900 padding center">
-        <h2 class="medium-spacing-halfsize">Project name</h2>
-        <p class="center italic">Project sub-title if needed</p>
+        <h1 class="medium-spacing-halfsize">Hybrid Cloud Migration: On-Prem NFS to AWS</h1>
+        <p class="center italic">Using AWS DataSync and AWS Storage Gateway</p>
     </section>
 
     <!-- about this project -->
     <section class="w-900 padding center">
-        <h3 class="main-title">Your title here</h3>
+        <h2 class="main-title">Overview</h2>
         <section>
-            <p class="justify">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Iste, eos. Nam fuga sunt reiciendis, minus cumque aut. Esse temporibus quod qui sint accusamus. Aspernatur, soluta aliquid. <span class="bold">Obcaecati quas quo odit!</span>. Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quos, unde ea. Aspernatur adipisci dolores quam commodi optio molestias animi atque rem. Iure esse, veniam laudantium deserunt cupiditate ea! Sequi, nisi!</p>
-            <p class="justify">Lorem ipsum dolor sit amet consectetur adipisicing elit. Consectetur dignissimos sed at saepe <span class="bold">laboriosam molestiae ipsam</span> quas cupiditate perspiciatis velit corporis, distinctio, dolorem adipisci.</p>
+            <p class="justify">As an AWS Certified Solutions Architect, I designed and implemented a hybrid storage migration solution to move on-premises NFS workloads to AWS.</p>
+            <p class="justify">The objective was to securely migrate file data while maintaining hybrid accessibility, minimizing downtime, and ensuring data integrity throughout the transition. This project simulates a real-world enterprise migration scenario where organizations need to modernize storage infrastructure without disrupting operations.</p>
         </section>
     </section>
 
     <section class="w-900 padding">
-        <h3 class="main-title center">Your title here</h3>
-        <p class="justify">Card system for anything you might want to showcase. I used it for showcasing my class system.</p>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minus ipsa exercitationem explicabo, harum inventore ex mollitia dignissimos eos quae quo dolor quod quisquam quis sunt libero reprehenderit repudiandae adipisci. Facilis.</p>
-        <p class="center">Explore my code on <span class="italic colorful-letter"><a class="link" href="https://github.com/" target="_blank">GitHub </a></span>!</p>
-    </section>
-    <section class="wrapper">
-        <section class="column card">
-            <p class="bold center">Your title here</p>
-            <ul class="no-bullet-list no-padding-list-item">
-                <!-- if you take the span-s out, the fonts won't be that colorful -->
-                <li><span class="colorful-letter">Lorem</span></li>
-                <li><span class="colorful-letter">ipsum</span></li>
-                <li><span class="colorful-letter">dolor</span></li>
-                <li><span class="colorful-letter">sit amet</span></li>
-                <li><span class="colorful-letter">consectetur adipisicing</span></li>
-                <li><span class="colorful-letter">ipsa exercitationem explicabo</span></li>
-                <li><span class="colorful-letter">mollitia dignissimos</span></li>
-                <li><span class="colorful-letter">quod quisquam</span></li>
-            </ul>
-        </section>
-        <section class="column card">
-            <p class="bold center">Your title here</p>
-            <ul class="no-bullet-list no-padding-list-item">
-                <li><span class="colorful-letter">Lorem</span></li>
-                <li><span class="colorful-letter">ipsum</span></li>
-                <li><span class="colorful-letter">dolor</span></li>
-                <li><span class="colorful-letter">sit amet</span></li>
-                <li><span class="colorful-letter">consectetur adipisicing</span></li>
-                <li><span class="colorful-letter">ipsa exercitationem explicabo</span></li>
-                <li><span class="colorful-letter">mollitia dignissimos</span></li>
-                <li><span class="colorful-letter">quod quisquam</span></li>
-            </ul>
-        </section>
-    </section>
+<h2 class="main-title center">Architecture Summary</h2>
 
+<p class="justify">This solution leveraged the following AWS services:&nbsp;</p>
+<ul>
+          <li>AWS DataSync for automated, high-performance data transfer&nbsp;</li>
+          <li>AWS Storage Gateway (File Gateway) for hybrid file access&nbsp;</li>
+          <li>Amazon S3 as the scalable storage backend&nbsp;</li>
+          <li>Amazon EC2 to simulate application workloads&nbsp;</li>
+          <li>IAM and CloudWatch for security and observability </li>
+      </ul>
+		<p class="justify">The architecture enabled:</p>
+      <ul>
+<li>Secure transfer of NFS data to S3</li>
+          <li>Continued hybrid access during migration</li>
+          <li>Centralized monitoring of transfer performance</li>
+          <li>Integrity verification of migrated files</li>
+		</ul>
+		  <img src="assets/optimized/project2-960.jpg" srcset="assets/optimized/project2-480.jpg 480w, assets/optimized/project2-960.jpg 960w" sizes="(max-width: 800px) calc(100vw - 32px), 960px" alt="Hybrid NFS migration architecture using DataSync, Storage Gateway, and S3" width="1890" height="940" decoding="async" loading="lazy"><p class="small"><a href="assets/project2.png">View full-resolution image</a></p>
+		  <h2 class="main-title center">Design Decisions and Rationale</h2>
+	    <p class="justify">Why DataSync?&nbsp;</p>
+	  <p class="justify">I selected AWS DataSync over manual transfer methods to ensure automated integrity verification, bandwidth optimization, and detailed task-level monitoring. DataSync reduces human error and accelerates migration timelines.&nbsp;</p>
+	  <p class="justify">Why Storage Gateway (File Gateway)?&nbsp;</p>
+	  <p class="justify">File Gateway allowed continued NFS access to S3-backed storage, enabling a phased migration strategy rather than a disruptive cutover.&nbsp;</p>
+	  <p class="justify">Why Amazon S3?&nbsp;</p>
+	  <p class="justify">Amazon S3 provides highly durable (11 9’s) and scalable object storage, making it ideal for long-term storage optimization and disaster recovery readiness.&nbsp;</p>
+	  <p class="justify">Hybrid Strategy Consideration&nbsp;</p>
+		  <p class="justify">Maintaining hybrid architecture during migration minimizes operational risk and allows teams to validate workloads before fully decommissioning on-prem systems.</p>
+		<h2 class="main-title center">Security and Governance Considerations</h2>
+	    <ul>
+	      <li>Configured IAM roles following least-privilege principles&nbsp;</li>
+	      <li>Encrypted data in transit using TLS&nbsp;</li>
+	      <li>Applied S3 bucket access policies&nbsp;</li>
+	      <li>Monitored transfer execution using CloudWatch logs and metrics</li>
+      </ul>
+      <p class="justify">Security and observability were treated as foundational, not optional.&nbsp;</p>
+<h2 class="main-title center">Implementation Highlights</h2>
+	    <ul>
+	      <li>Deployed and activated a DataSync agent&nbsp;</li>
+	      <li>Configured NFS source and S3 destination locations&nbsp;</li>
+	      <li>Executed and monitored migration tasks&nbsp;</li>
+	      <li>Deployed File Gateway and mounted NFS shares&nbsp;</li>
+	      <li>Validated file integrity and workload access post-migration&nbsp;</li>
+      </ul>
+      <p class="justify">The migration was completed successfully with verified data consistency.</p>
+<h2 class="main-title center">Business Impact</h2>
+      <p class="justify">This architecture demonstrates how organizations can:&nbsp;</p>
+      <ul>
+        <li>Reduce reliance on physical storage infrastructure&nbsp;</li>
+        <li>Improve disaster recovery posture&nbsp;</li>
+        <li>Transition to scalable cloud storage without operational disruption&nbsp;</li>
+        <li>Optimize storage costs using tiered S3 storage classes&nbsp;</li>
+        <li>Maintain continuity during infrastructure modernization</li>
+      </ul>
+    </section>
     <!-- what did i learn -->
     <section class="w-900 padding center baby-pink-light">
-        <h3 class="main-title">Your title here</h3>
+        <h2 class="main-title">Key Skills Demonstrated</h2>
         <ul class="justify padding-list-10">
-            <li class="no-padding-list-item"><span class="bold">I used this section to showcase what did i learn from creating this project!</span> </li>
-            <li class="no-padding-list-item">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nam nostrum odit, est quis assumenda numquam nesciunt, perspiciatis rerum veniam totam esse odio tenetur a vel iusto voluptas quasi maiores deserunt.</li>
-            <li class="no-padding-list-item">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ab, voluptatum officia dolores commodi dolorem necessitatibus sint voluptate quod esse rem? Recusandae dolorem iure inventore dolore delectus debitis sed in. Labore.</li>
-            <li class="no-padding-list-item">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nesciunt deserunt debitis, possimus maxime ad repudiandae repellendus dolor animi accusamus voluptatem, nisi molestiae, tempora eum unde exercitationem temporibus magnam minus iste!</li>
-            <li class="no-padding-list-item">Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugit commodi aliquam modi nemo illo facere minima fuga vel, itaque natus voluptate rerum odit, accusantium eligendi. Alias ad beatae nulla cumque.</li> 
-            <li class="no-padding-list-item">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Labore maxime in unde, ad totam nesciunt atque consectetur ipsum sed quisquam deserunt numquam! Amet iusto eaque aliquid facilis odio facere officia!</li>
-            <li class="no-padding-list-item">Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatem quaerat pariatur, odio corrupti voluptates fugit aut dicta iste totam veritatis commodi, quasi, eius eos doloremque. Tempora maiores eligendi provident repellendus.</li>
-        </ul>
+            <li class="no-padding-list-item"><span class="bold">Hybrid cloud architecture design</span> </li>
+            <li class="no-padding-list-item">Storage modernization strategy</li>
+            <li class="no-padding-list-item">Data migration planning and execution</li>
+            <li class="no-padding-list-item">AWS IAM configuration</li>
+            <li class="no-padding-list-item">Monitoring and observability</li>
+            <li class="no-padding-list-item">Risk-aware cloud transition planning</li>
+            </ul>
 </section>
 
     <p class="wrapper justify-content"><a href="portfolio.html" class="link-no-scale colorful-letter">Back to portfolio</a></p>
 
     <!-- footer -->
-    <footer>@iluskaland 2024</footer>
+        </main>
+    <footer>
+      <p>&copy; 2026 Ita Ebude · Cloud engineering portfolio</p>
+      <a href="https://github.com/ebudeita">GitHub</a> · <a href="https://www.linkedin.com/in/ebude-ita/">LinkedIn</a> · <a href="mailto:ebudeita@gmail.com">Email</a>
+      <p>Template by <a href="https://github.com/iluskaland/portfolio-template">iluskaland</a> · <a href="CREDITS.md">Credits</a></p>
+    </footer>
 </body>
 
 </html>

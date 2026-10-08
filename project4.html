@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Deploying Moodle on AWS using Terraform, Ubuntu, Apache, PHP, and Amazon RDS MySQL, with a demo and practical troubleshooting lessons.">
+    <meta name="author" content="Ita Ebude">
+    <meta name="theme-color" content="#96345e">
+    <title>Moodle on AWS with Terraform | Ita Ebude</title>
+    <link rel="canonical" href="https://itaebude.com/project4.html">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Ita Ebude | Cloud Portfolio">
+    <meta property="og:title" content="Moodle on AWS with Terraform | Ita Ebude">
+    <meta property="og:description" content="Deploying Moodle on AWS using Terraform, Ubuntu, Apache, PHP, and Amazon RDS MySQL, with a demo and practical troubleshooting lessons.">
+    <meta property="og:url" content="https://itaebude.com/project4.html">
+    <meta property="og:image" content="https://itaebude.com/assets/profile-pic2.png">
+    <meta property="og:image:alt" content="Ita Ebude">
+    <meta name="twitter:card" content="summary">
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style-project.css">
+    <script type="application/ld+json">{"url":"https://itaebude.com/project4.html","@type":"WebPage","@context":"https://schema.org","name":"Moodle on AWS with Terraform | Ita Ebude","about":{"@id":"https://itaebude.com/#ita-ebude"}}</script>
+</head>
+    <body>
+        <!-- navigation bar -->
+        <a class="skip-link" href="#main-content">Skip to content</a>
+    <nav class="sticky" aria-label="Main navigation">
+      <div class="nav-inner">
+        <a class="brand" href="index.html">Ita Ebude<span class="colorful-letter">.</span></a>
+        <ul class="main-nav">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about-me.html">About</a></li>
+          <li><a href="skill-set.html">Skills</a></li>
+          <li><a href="portfolio.html">Projects</a></li>
+          <li><a href="skill-set.html#certifications">Certifications</a></li>
+          <li><a href="index.html#contact-me">Contact</a></li>
+        </ul>
+      </div>
+    </nav>
+    <main id="main-content" tabindex="-1">
+        <!-- project name -->
+        <section class="w-900 padding center">
+            <h1 class="medium-spacing-halfsize">Cloud-hosted Moodle LMS on AWS</h1>
+        </section>
+        <!-- about this project -->
+        <section class="w-900 padding center">
+            <h2 class="main-title">Overview</h2>
+            <section>
+                <p class="justify">I designed and deployed a cloud-hosted Moodle Learning Management System (LMS) on AWS using Terraform. The project demonstrates how an educational institution or training organization can host an online learning platform in the cloud while separating the application and database layers and applying secure AWS networking practices.</p>
+                <p class="justify">Moodle runs on an Amazon EC2 instance using Ubuntu Linux, Apache, and PHP, while course, user, and application data are stored in an Amazon RDS MySQL database. The supporting AWS infrastructure including the VPC, public and private subnets, route tables, Internet Gateway, security groups, EC2 instance, and RDS resources was provisioned using Terraform.</p>
+                <p class="justify">After deployment, I configured Moodle and created a sample <b>Introduction to Freelancing</b>&nbsp;course to demonstrate the LMS from infrastructure provisioning through to the end-user learning experience.</p>
+            </section>
+        </section>
+        <section class="w-900 padding">
+            <h2 id="demo-video" class="main-title center">Demo video</h2>
+            <section>
+                <div class="video-container">
+                    <iframe
+                    src="https://www.youtube-nocookie.com/embed/6bxV49DW798"
+                    title="Moodle on AWS: Terraform deployment and application demo" loading="eager" width="960" height="540" referrerpolicy="strict-origin-when-cross-origin"
+
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    allowfullscreen>
+                    </iframe>
+                </div>
+            </section>
+            <p><a class="button-outline" href="https://youtu.be/6bxV49DW798" target="_blank" rel="noopener noreferrer">Watch the demo on YouTube</a></p>
+            <p>The demo covers the architecture, Terraform deployment, AWS resources, Moodle configuration, database connectivity, and the completed Introduction to Freelancing course.</p>
+            <p class="center">Explore my code on <span class="italic colorful-letter"><a class="link" href="https://github.com/ebudeita/cloud-hosted_moodle_lms" target="_blank" rel="noopener noreferrer">GitHub </a></span>!</p>
+            <h2 class="main-title center">Project Objectives</h2>
+            <p>The primary goals of this project were to:</p>
+            <ul>
+                <li>Deploy a real-world education application on AWS.</li>
+                <li>Use Terraform to provision infrastructure as code.</li>
+                <li>Separate the application and database tiers using public and private subnets.</li>
+                <li>Restrict database access to the Moodle web server.</li>
+                <li>Gain hands-on experience deploying and troubleshooting applications on Linux.</li>
+                <li>Demonstrate how cloud infrastructure supports an operational Learning Management System.</li>
+                <li>Build a repeatable environment that can be deployed and destroyed when required to control cloud costs.</li>
+            </ul>
+
+            <h2 class="has-menu">Architecture</h2>
+            <p>The environment is deployed inside an AWS VPC with both public and private subnets across two Availability Zones.</p>
+            <p>The Moodle application runs on an Amazon EC2 instance located in a public subnet. The EC2 instance uses Ubuntu Linux with Apache and PHP to serve the Moodle application.&nbsp;</p>
+            <p>Amazon RDS for MySQL provides the database layer and is deployed within private database subnets, preventing direct public access.</p>
+            <p>Users access Moodle over HTTP through the Internet Gateway. When Moodle requires application data, the EC2 instance communicates with Amazon RDS over MySQL port 3306.</p>
+            <p>Security groups control communication between the different components. HTTP traffic is permitted to the web server, SSH administration is restricted to an authorized IP address, and the RDS security group accepts MySQL traffic only from the EC2 web server security group.</p>
+            <h2 class="has-menu">AWS Services &amp; Technologies</h2>
+            <p>Cloud Infrastructure</p>
+            <ul><li>Amazon EC2</li>
+            <li>Amazon RDS for MySQL</li>
+            <li>Amazon VPC</li>
+            <li>Public and Private Subnets</li>
+            <li>Internet Gateway</li>
+            <li>Route Tables</li>
+            <li>Security Groups</li>
+            <li>Amazon EBS</li>
+            <li>IAM</li>
+            </ul>
+            <p>Infrastructure & Administration</p>
+            <ul><li>Terraform</li>
+            <li>Linux / Ubuntu</li>
+            <li> Bash</li>
+            <li>SSH</li>
+            <li>Git</li>
+            </ul>
+            <p>Application Stack</p>
+            <ul><li>Moodle LMS</li>
+            <li>Apache HTTP Server</li>
+            <li>PHP</li>
+            <li>MySQL</li>
+            </ul>
+            <h2 class="has-menu">Infrastructure as Code</h2>
+            <p>Rather than manually creating the AWS environment through the AWS Management Console, I used Terraform to provision the infrastructure.</p>
+            <p>The Terraform configuration creates and manages resources including:</p>
+            <ul><li>VPC</li>
+            <li>Public and private subnets</li>
+            <li>Internet Gateway</li>
+            <li>Route tables</li>
+            <li>Security groups</li>
+            <li>EC2 instance</li>
+            <li>RDS MySQL database</li>
+            <li>DB subnet group</li>
+            <li>IAM resources</li>
+            <li>Supporting networking components</li>
+            </ul>
+            <p>This makes the environment <b>repeatable, reusable, and easier to deploy or tear down</b> when it is no longer required.</p>
+            <h2>Application Deployment</h2>
+            <p>After Terraform provisioned the infrastructure, the EC2 instance was configured to host Moodle.</p>
+            <p>The deployment process included:</p>
+            <ul><li>Launching an Ubuntu EC2 instance.</li>
+            <li>Installing Apache, PHP, Git, and required PHP extensions.</li>
+            <li>Downloading the Moodle application from its Git repository.</li>
+            <li>Creating and configuring the Moodle data directory.</li>
+            <li>Configuring file permissions.</li>
+            <li>Configuring the Apache virtual host.</li>
+            <li>Connecting Moodle to the RDS MySQL database.</li>
+            <li>Completing the Moodle web installation.</li>
+            <li>Configuring the LMS environment.</li>
+            <li>Creating a sample <b>Introduction to Freelancing</b> course to validate the deployment.
+            </li>
+            </ul>
+            <h2 class="main-title center">Skills demonstrated</h2>
+            <ul>
+                <li>
+                    <b>AWS</b>: EC2, RDS, VPC, IAM, EBS, Security Groups, Subnets, Internet Gateway, Route Tables
+                </li>
+                <li>
+                    <b>Infrastructure as Code</b>: Terraform
+                </li>
+                <li>
+                    <b>Operating Systems</b>: Linux / Ubuntu
+                </li>
+                <li>
+                    <b>Web Technologies</b>: Apache, PHP, Moodle
+                </li>
+                <li>
+                    <b>Database:</b>&nbsp;MySQL / Amazon RDS
+                </li>
+                <li>
+                    <b>Cloud Networking</b>: VPC design, public/private subnet architecture, security-group communication, ports and routing
+                </li>
+                <li>
+                    <b>Administration &amp; Troubleshooting</b>: SSH, Linux commands, <code>systemctl</code>, cloud-init logs, application logs, connectivity testing, dependency troubleshooting
+                </li>
+                <li>
+                    <b>Education Technology</b>: Learning Management Systems, Moodle administration, online course deployment
+                </li>
+            </ul>
+        </section>
+        <!-- what did i learn -->
+        <section class="w-900 padding center baby-pink-light">
+            <h2 class="main-title">Lessons Learned</h2>
+            <p>This project reinforced several important cloud engineering concepts.</p>
+            <ul>
+                <li class="no-padding-list-item">
+                    <b>Infrastructure deployment and application deployment are different layers</b>.&nbsp; A successful <code>terraform apply</code> confirms that the infrastructure was provisioned, but it does not necessarily mean that the application running on that infrastructure deployed successfully.
+                </li>
+                <li class="no-padding-list-item">
+                    <b>Logs are essential for troubleshooting.</b>&nbsp;Reviewing <code>cloud-init</code> and user-data logs allowed me to identify exactly where the automated installation failed rather than repeatedly recreating resources without understanding the underlying problem.
+                </li>
+                <li class="no-padding-list-item">
+                    <b>Networking should be investigated systematically</b>. When the application was unreachable, I learned to work through the connection path including public IP addressing, security groups, ports, Internet Gateway connectivity, and the application service itself.
+                </li>
+                <li class="no-padding-list-item">
+                    <b>Automation must account for operating-system and package compatibility</b>. A dependency that is unavailable or has changed in a newer Ubuntu release can cause an entire automated deployment script to stop.
+                </li>
+                <li class="no-padding-list-item">
+                    <b>Security groups can be used to control communication between application tiers</b>. Rather than exposing MySQL publicly, the RDS security group trusts only the web server security group on port 3306.
+                </li>
+                <li class="no-padding-list-item">
+                    <b>Infrastructure as Code makes experimentation much easier</b>. Because the infrastructure was defined in Terraform, I could destroy the environment to avoid unnecessary AWS charges and recreate it when I was ready to continue working.
+                </li>
+                <li class="no-padding-list-item">
+                    <b>Most importantly, the project strengthened my troubleshooting mindset</b>. Instead of treating deployment errors as failures, I learned to use logs, service status commands, networking tests, and incremental validation to isolate and resolve problems.
+                </li>
+            </ul>
+        </section>
+        <p class="wrapper justify-content"><a href="portfolio.html" class="link-no-scale colorful-letter">Back to portfolio</a></p>
+        <!-- footer -->
+            </main>
+    <footer>
+      <p>&copy; 2026 Ita Ebude · Cloud engineering portfolio</p>
+      <a href="https://github.com/ebudeita">GitHub</a> · <a href="https://www.linkedin.com/in/ebude-ita/">LinkedIn</a> · <a href="mailto:ebudeita@gmail.com">Email</a>
+      <p>Template by <a href="https://github.com/iluskaland/portfolio-template">iluskaland</a> · <a href="CREDITS.md">Credits</a></p>
+    </footer>
+    </body>
+</html>

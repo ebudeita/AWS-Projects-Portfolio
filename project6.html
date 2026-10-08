@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="EduCloud Guard: a serverless AWS governance, security, and cost-monitoring project using Lambda, DynamoDB, EventBridge, SNS, Terraform, and Python.">
+    <meta name="author" content="Ita Ebude">
+    <meta name="theme-color" content="#96345e">
+    <title>EduCloud Guard | AWS Governance &amp; Security | Ita Ebude</title>
+    <link rel="canonical" href="https://itaebude.com/project6.html">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Ita Ebude | Cloud Portfolio">
+    <meta property="og:title" content="EduCloud Guard | AWS Governance &amp; Security | Ita Ebude">
+    <meta property="og:description" content="Automated AWS governance scans, security alerts, cost checks, and a centralized dashboard for a simulated university environment.">
+    <meta property="og:url" content="https://itaebude.com/project6.html">
+    <meta property="og:image" content="https://itaebude.com/assets/project6.png">
+    <meta property="og:image:alt" content="EduCloud Guard AWS architecture">
+    <meta name="twitter:card" content="summary_large_image">
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style-project.css">
+    <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","name":"EduCloud Guard | AWS Governance & Security | Ita Ebude","url":"https://itaebude.com/project6.html","about":{"@id":"https://itaebude.com/#ita-ebude"}}</script>
+</head>
+<body>
+    <a class="skip-link" href="#main-content">Skip to content</a>
+    <nav class="sticky" aria-label="Main navigation">
+        <div class="nav-inner">
+            <a class="brand" href="index.html">Ita Ebude<span class="colorful-letter">.</span></a>
+            <ul class="main-nav">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about-me.html">About</a></li>
+                <li><a href="skill-set.html">Skills</a></li>
+                <li><a href="portfolio.html">Projects</a></li>
+                <li><a href="skill-set.html#certifications">Certifications</a></li>
+                <li><a href="index.html#contact-me">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+    <main id="main-content" tabindex="-1">
+        <header class="w-900 padding center">
+            <p class="eyebrow">Completed project · Cloud governance</p>
+            <h1>EduCloud Guard</h1>
+            <p class="role">AWS cloud governance, security, and cost monitoring</p>
+            <p><a class="button-outline" href="https://github.com/ebudeita/educloud-guard" target="_blank" rel="noopener noreferrer">Explore the project on GitHub</a></p>
+        </header>
+
+        <section class="w-900 padding" aria-labelledby="overview">
+            <h2 id="overview" class="main-title">Overview</h2>
+            <p>I built EduCloud Guard to automate cloud governance checks for NorthStar University, a simulated higher-education organization. The project brings resource governance, security findings, and potential cost waste into one central dashboard.</p>
+            <p>The solution combines a Python-based AWS Lambda scanner, DynamoDB finding storage, daily EventBridge scheduling, and SNS alerts. Terraform defines the supporting infrastructure, while an API gives the dashboard access to findings without exposing AWS credentials in the browser.</p>
+            <h3>The problem</h3>
+            <p>When university departments manage their own cloud resources, inconsistent tags, unapproved department assignments, exposed administrative ports, and unused storage can be difficult to track. Manual reviews make it harder to maintain a consistent view of governance and security across teams.</p>
+            <h3>The outcome</h3>
+            <p>EduCloud Guard turns these checks into repeatable scans and actionable findings. Administrators can review open and resolved issues, filter by department and severity, and inspect detection history and recommended remediation in one place.</p>
+        </section>
+
+        <section class="w-900 padding" aria-labelledby="architecture">
+            <h2 id="architecture" class="main-title">Architecture</h2>
+            <img src="assets/project6.png" alt="EduCloud Guard architecture connecting scheduled scans, AWS resource checks, findings storage, alerts, and the dashboard" width="1536" height="1024" loading="lazy" decoding="async">
+            <p class="small"><a href="assets/project6.png">View full-resolution architecture</a></p>
+            <ol>
+                <li><strong>Schedule:</strong> Amazon EventBridge invokes the scanner every 24 hours using <code>rate(1 day)</code>.</li>
+                <li><strong>Evaluate:</strong> AWS Lambda runs separate Python modules for governance, security, and cost checks against selected AWS resources.</li>
+                <li><strong>Record:</strong> Amazon DynamoDB stores each finding and its detection history, status, and scan count.</li>
+                <li><strong>Alert:</strong> Amazon SNS sends notifications for high-severity security findings.</li>
+                <li><strong>Review:</strong> API Gateway and the Flask backend provide finding data to the web dashboard.</li>
+            </ol>
+            <p>IAM permissions are scoped to the services required by the scanner. CloudWatch provides execution logs and operational visibility, while EC2 and EBS resources support controlled governance and cost-check validation.</p>
+        </section>
+
+        <section class="w-900 padding" aria-labelledby="controls">
+            <h2 id="controls" class="main-title">Governance, security, and cost controls</h2>
+            <ul>
+                <li><strong>GOV-001 · Low:</strong> Detects missing governance tags: Department, Owner, Environment, Project, and CostCenter.</li>
+                <li><strong>GOV-002 · Low:</strong> Flags resources assigned to a department outside the approved university list.</li>
+                <li><strong>SEC-001 · High:</strong> Detects security groups exposing SSH on TCP port 22 to <code>0.0.0.0/0</code>.</li>
+                <li><strong>SEC-002 · High:</strong> Detects security groups exposing RDP on TCP port 3389 to <code>0.0.0.0/0</code>.</li>
+                <li><strong>COST-001 · Medium:</strong> Identifies unattached EBS volumes that may continue to incur unnecessary costs.</li>
+            </ul>
+            <p>The approved departments in the simulated environment are ComputerScience, Engineering, Research, Admissions, and LearningTechnology.</p>
+        </section>
+
+        <section class="w-900 padding" aria-labelledby="dashboard">
+            <h2 id="dashboard" class="main-title">Cloud posture dashboard</h2>
+            <p>The dashboard summarizes open and resolved findings, severity levels, and security, governance, and cost categories. Administrators can filter by severity, category, department, or status, then search, sort, and page through results.</p>
+            <img src="assets/educloud-guard-dashboard.png" alt="EduCloud Guard dashboard with posture metrics, finding filters, and a findings list" width="2048" height="1209" loading="lazy" decoding="async">
+            <p class="small"><a href="assets/educloud-guard-dashboard.png">View full-resolution dashboard screenshot</a></p>
+            <h3>Finding details and lifecycle</h3>
+            <p>Each finding shows its affected resource, department, severity, status, detection history, description, and recommended remediation. Stable identifiers combine the control and resource, such as <code>SEC-001#sg-xxxxxxxx</code>, so repeat scans update an existing finding instead of creating duplicate records.</p>
+            <img src="assets/educloud-guard-finding-details.png" alt="EduCloud Guard finding detail view showing resource information, detection history, and remediation guidance" width="2048" height="1213" loading="lazy" decoding="async">
+            <p class="small"><a href="assets/educloud-guard-finding-details.png">View full-resolution finding details screenshot</a></p>
+        </section>
+
+        <section class="w-900 padding" aria-labelledby="demo-video">
+            <h2 id="demo-video" class="main-title">Demo video</h2>
+            <div class="video-container">
+                <iframe
+                    src="https://www.youtube-nocookie.com/embed/JhY2gSNszpg"
+                    title="EduCloud Guard: AWS governance, security, and cost-monitoring demo"
+                    width="960" height="540" loading="eager"
+                    referrerpolicy="strict-origin-when-cross-origin"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    allowfullscreen>
+                </iframe>
+            </div>
+            <p><a class="button-outline" href="https://youtu.be/JhY2gSNszpg" target="_blank" rel="noopener noreferrer">Watch the demo on YouTube</a></p>
+        </section>
+
+        <section class="w-900 padding" aria-labelledby="decisions">
+            <h2 id="decisions" class="main-title">Implementation and design decisions</h2>
+            <ul>
+                <li><strong>Serverless scanning:</strong> Lambda runs the checks when invoked, avoiding a continuously running scanner server.</li>
+                <li><strong>Modular controls:</strong> Governance, security, and cost scanners are separated so new checks can be added without combining all logic in one module.</li>
+                <li><strong>Repeatable infrastructure:</strong> Terraform makes the environment version controlled and easier to recreate, audit, or destroy after testing.</li>
+                <li><strong>Actionable history:</strong> First and last detection timestamps, scan counts, and status distinguish new, persistent, and resolved findings.</li>
+                <li><strong>Backend AWS access:</strong> AWS API requests stay in the backend; frontend JavaScript does not contain AWS credentials.</li>
+            </ul>
+            <h3>Skills demonstrated</h3>
+            <p>AWS architecture, Lambda, DynamoDB, EventBridge, SNS, API Gateway, EC2, EBS, IAM, CloudWatch, Terraform, Python, Boto3, Linux, REST APIs, JavaScript, Git, and GitHub.</p>
+        </section>
+
+        <section class="w-900 padding baby-pink-light" aria-labelledby="next-steps">
+            <h2 id="next-steps" class="main-title">Project scope and future enhancements</h2>
+            <p>This is a portfolio project built in a controlled AWS environment. Deliberately misconfigured test resources were used to validate the scanner; they are not production configurations.</p>
+            <p>Potential next steps include S3 and IAM controls, multi-account scanning with AWS Organizations, historical posture trends, automated remediation, dashboard authentication and role-based access, and a CI/CD deployment pipeline.</p>
+            <p><a href="https://github.com/ebudeita/educloud-guard/blob/main/README.md" target="_blank" rel="noopener noreferrer">Read the project documentation on GitHub</a></p>
+        </section>
+        <p class="wrapper justify-content"><a href="portfolio.html" class="link-no-scale colorful-letter">Back to portfolio</a></p>
+    </main>
+    <footer>
+        <p>&copy; 2026 Ita Ebude · Cloud engineering portfolio</p>
+        <a href="https://github.com/ebudeita">GitHub</a> · <a href="https://www.linkedin.com/in/ebude-ita/">LinkedIn</a> · <a href="mailto:ebudeita@gmail.com">Email</a>
+        <p>Template by <a href="https://github.com/iluskaland/portfolio-template">iluskaland</a> · <a href="CREDITS.md">Credits</a></p>
+    </footer>
+</body>
+</html>
