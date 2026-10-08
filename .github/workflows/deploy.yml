@@ -41,10 +41,14 @@ jobs:
           echo "Website files prepared:"
           find deploy -type f | wc -l
 
-      - name: Preview S3 deployment
+          test -s deploy/index.html || {
+            echo "ERROR: Homepage missing or empty. Deployment stopped."
+            exit 1
+          }
+
+      - name: Deploy website to S3
         run: |
           aws s3 sync deploy/ "s3://${{ vars.S3_BUCKET }}/" \
-            --dryrun \
             --exclude "*" \
             --include "*.html" \
             --include "*.css" \
@@ -62,3 +66,9 @@ jobs:
             --include "*.ttf" \
             --include "*.xml" \
             --include "robots.txt"
+
+      - name: Invalidate CloudFront cache
+        run: |
+          aws cloudfront create-invalidation \
+            --distribution-id "${{ vars.CLOUDFRONT_DISTRIBUTION_ID }}" \
+            --paths "/*"
