@@ -72,7 +72,9 @@ jobs:
           echo "Website validation passed."
 
       - name: Deploy website to S3
+        id: s3_deploy
         run: |
+          set -euo pipefail
           aws s3 sync deploy/ "s3://${{ vars.S3_BUCKET }}/" \
             --exclude "*" \
             --include "*.html" \
@@ -90,9 +92,19 @@ jobs:
             --include "*.woff2" \
             --include "*.ttf" \
             --include "*.xml" \
-            --include "robots.txt"
+            --include "robots.txt" | tee /tmp/s3-sync.log
+
+          if grep -Eq '^[[:space:]]*(upload|delete|copy):' /tmp/s3-sync.log; then
+            echo "changed=true" >> "$GITHUB_OUTPUT"
+            echo "Website changes detected."
+          else
+            echo "changed=false" >> "$GITHUB_OUTPUT"
+            echo "No website changes detected."
+          fi
+        shell: bash
 
       - name: Invalidate CloudFront cache
+        if: steps.s3_deploy.outputs.changed == 'true'
         run: |
           aws cloudfront create-invalidation \
             --distribution-id "${{ vars.CLOUDFRONT_DISTRIBUTION_ID }}" \
