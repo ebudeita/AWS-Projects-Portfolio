@@ -37,6 +37,14 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v5
 
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Install Python dependencies
+        run: python -m pip install boto3
+
       - name: Configure AWS credentials
         uses: aws-actions/configure-aws-credentials@v6.3.0
         with:
@@ -70,39 +78,22 @@ jobs:
           done
 
           echo "Website validation passed."
+          echo "Generating SHA-256 checksums..."
 
-      - name: Deploy website to S3
+          cd deploy
+          find . -type f -print0 | sort -z | xargs -0 sha256sum > /tmp/portfolio-checksums.txt
+
+          echo "Checksums generated:"
+          wc -l /tmp/portfolio-checksums.txt
+
+      - name: Preview checksum-based S3 deployment
         id: s3_deploy
+        env:
+          S3_BUCKET: ${{ vars.S3_BUCKET }}
         run: |
           set -euo pipefail
-          aws s3 sync deploy/ "s3://${{ vars.S3_BUCKET }}/" \
-            --no-progress \
-            --exclude "*" \
-            --include "*.html" \
-            --include "*.css" \
-            --include "*.js" \
-            --include "*.json" \
-            --include "*.ico" \
-            --include "*.png" \
-            --include "*.jpg" \
-            --include "*.jpeg" \
-            --include "*.gif" \
-            --include "*.svg" \
-            --include "*.webp" \
-            --include "*.woff" \
-            --include "*.woff2" \
-            --include "*.ttf" \
-            --include "*.xml" \
-            --include "robots.txt" | tee /tmp/s3-sync.log
-
-          if grep -Eq '(upload|delete|copy):' /tmp/s3-sync.log; then
-            echo "changed=true" >> "$GITHUB_OUTPUT"
-            echo "Website changes detected."
-          else
-            echo "changed=false" >> "$GITHUB_OUTPUT"
-            echo "No website changes detected."
-          fi
-        shell: bash
+          python scripts/deploy.py --dry-run
+          echo "changed=false" >> "$GITHUB_OUTPUT"
 
       - name: Invalidate CloudFront cache
         if: steps.s3_deploy.outputs.changed == 'true'

@@ -4,6 +4,7 @@ pinegrow.json
 # Local backup folders
 _pgbackup/
 _pginfo/
+node_modules/
 
 # Local audit and preview files
 *.csv
