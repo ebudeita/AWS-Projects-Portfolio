@@ -1,5 +1,5 @@
-#!/usr/bin/env python3
-"""Preview checksum-based deployment to Amazon S3."""
+﻿#!/usr/bin/env python3
+"""Checksum-based deployment to Amazon S3."""
 
 import argparse
 import hashlib
@@ -16,6 +16,30 @@ EXTENSIONS = {
     ".webp", ".woff", ".woff2", ".ttf", ".xml",
 }
 
+CONTENT_TYPES = {
+    ".html":  "text/html; charset=utf-8",
+    ".css":   "text/css; charset=utf-8",
+    ".js":    "application/javascript; charset=utf-8",
+    ".json":  "application/json; charset=utf-8",
+    ".xml":   "application/xml; charset=utf-8",
+    ".ico":   "image/x-icon",
+    ".png":   "image/png",
+    ".jpg":   "image/jpeg",
+    ".jpeg":  "image/jpeg",
+    ".gif":   "image/gif",
+    ".svg":   "image/svg+xml",
+    ".webp":  "image/webp",
+    ".woff":  "font/woff",
+    ".woff2": "font/woff2",
+    ".ttf":   "font/ttf",
+}
+
+CACHE_CONTROL = {
+    ".html": "no-cache",
+}
+
+DEFAULT_CACHE_CONTROL = "public, max-age=31536000, immutable"
+
 
 def md5_file(path):
     digest = hashlib.md5(usedforsecurity=False)
@@ -25,6 +49,27 @@ def md5_file(path):
             digest.update(chunk)
 
     return digest.hexdigest()
+
+
+def content_type_for(path):
+    if path.name == "robots.txt":
+        return "text/plain; charset=utf-8"
+    return CONTENT_TYPES.get(path.suffix.lower(), "application/octet-stream")
+
+
+def cache_control_for(path):
+    return CACHE_CONTROL.get(path.suffix.lower(), DEFAULT_CACHE_CONTROL)
+
+
+def upload_file(s3, bucket, key, path):
+    body = path.read_bytes()
+    s3.put_object(
+        Bucket=bucket,
+        Key=key,
+        Body=body,
+        ContentType=content_type_for(path),
+        CacheControl=cache_control_for(path),
+    )
 
 
 def main():
@@ -64,7 +109,8 @@ def main():
             )
 
             if status == 404:
-                print(f"WOULD UPLOAD (new): {key}")
+                upload_file(s3, args.bucket, key, path)
+                print(f"UPLOADED (new): {key}")
                 changed += 1
                 continue
 
@@ -77,17 +123,25 @@ def main():
                 unchanged += 1
                 print(f"SKIP (identical): {key}")
             else:
+                upload_file(s3, args.bucket, key, path)
                 changed += 1
-                print(f"WOULD UPLOAD (changed): {key}")
+                print(f"UPLOADED (changed): {key}")
         else:
+            upload_file(s3, args.bucket, key, path)
             unverified += 1
-            print(f"UNVERIFIED (ETag not MD5): {key}")
+            print(f"UNVERIFIED UPLOADED: {key}")
 
-    print("\nDeployment preview summary")
+    print("\nDeployment summary")
     print(f"Unchanged: {unchanged}")
-    print(f"Would upload: {changed}")
-    print(f"Unverified: {unverified}")
-    print("DRY RUN ONLY - no files uploaded or deleted.")
+    print(f"Uploaded:  {changed}")
+    print(f"Unverified uploaded: {unverified}")
+    print("Deployment complete.")
+
+    github_output = os.environ.get("GITHUB_OUTPUT")
+    if github_output:
+        with open(github_output, "a") as fh:
+            value = "true" if (changed + unverified) > 0 else "false"
+            fh.write(f"changed={value}\n")
 
 
 if __name__ == "__main__":

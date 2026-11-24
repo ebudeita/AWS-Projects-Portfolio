@@ -86,14 +86,13 @@ jobs:
           echo "Checksums generated:"
           wc -l /tmp/portfolio-checksums.txt
 
-      - name: Preview checksum-based S3 deployment
+      - name: Deploy changed files to S3
         id: s3_deploy
         env:
           S3_BUCKET: ${{ vars.S3_BUCKET }}
         run: |
           set -euo pipefail
-          python scripts/deploy.py --dry-run
-          echo "changed=false" >> "$GITHUB_OUTPUT"
+          python scripts/deploy.py --bucket "$S3_BUCKET"
 
       - name: Invalidate CloudFront cache
         if: steps.s3_deploy.outputs.changed == 'true'

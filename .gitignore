@@ -1,5 +1,6 @@
 # Local editor configuration
 pinegrow.json
+.kiro/
 
 # Local backup folders
 _pgbackup/
